@@ -1,0 +1,275 @@
+{
+    "info": {
+        "_postman_id": "a1b2c3d4-e5f6-7890",
+        "name": "Blog Press Api",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Blogs",
+            "item": [
+                {
+                    "name": "Get All Blogs",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/blogs",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "blogs"]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Blog",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"My First Blog\",\n    \"description\": \"This is my first blog post\",\n    \"image_url\": \"https://example.com/image.jpg\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/blogs",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "blogs"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Single Blog",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/blogs/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "blogs", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Blog",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Updated Blog Title\",\n    \"description\": \"Updated description\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/blogs/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "blogs", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Blog",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/blogs/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "blogs", "1"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Posts",
+            "item": [
+                {
+                    "name": "Get All Posts for Blog",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/blogs/1/posts",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "blogs", "1", "posts"]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Post",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"My First Post\",\n    \"content\": \"This is the content of my first post\",\n    \"image_url\": \"https://example.com/post-image.jpg\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/blogs/1/posts",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "blogs", "1", "posts"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Single Post",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/blogs/1/posts/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "blogs", "1", "posts", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Post",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Updated Post Title\",\n    \"content\": \"Updated content\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/blogs/1/posts/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "blogs", "1", "posts", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Post",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/blogs/1/posts/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "blogs", "1", "posts", "1"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Interactions",
+            "item": [
+                {
+                    "name": "Like Post",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/posts/1/like",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "posts", "1", "like"]
+                        }
+                    }
+                },
+                {
+                    "name": "Comment on Post",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "vg@123"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"comment\": \"This is a great post!\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/posts/1/comment",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "posts", "1", "comment"]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000"
+        }
+    ]
+}
+
