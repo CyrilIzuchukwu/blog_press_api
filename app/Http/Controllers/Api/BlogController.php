@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
@@ -98,11 +99,11 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog): JsonResponse
+    public function update(Request $request, $id): JsonResponse
     {
-        $id = $blog->id;
-
         try {
+
+            $blog = Blog::findOrFail($id);
 
             $validator = Validator::make($request->all(), [
                 'title' => 'sometimes|string|max:255',
@@ -114,7 +115,6 @@ class BlogController extends Controller
                 throw new ValidationException($validator);
             }
 
-
             $blog->update($validator->validated());
             $blog->load(['user', 'posts']);
 
@@ -123,6 +123,11 @@ class BlogController extends Controller
                 'message' => "Blog with ID {$id} updated successfully",
                 'data' => $blog
             ]);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => "Blog with ID {$id} not found",
+            ], 404);
         } catch (ValidationException $e) {
             return response()->json([
                 'status' => 'error',
