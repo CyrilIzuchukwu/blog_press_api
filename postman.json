@@ -1,7 +1,7 @@
 {
     "info": {
         "_postman_id": "",
-        "name": "",
+        "name": "Blog Press",
         "schema": ""
     },
     "item": [
@@ -9,7 +9,7 @@
             "name": "Blogs",
             "item": [
                 {
-                    "name": "Get All Blogs",
+                    "name": "Get all blogs",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -26,7 +26,7 @@
                     }
                 },
                 {
-                    "name": "Create Blog",
+                    "name": "Create a new blog",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -51,7 +51,7 @@
                     }
                 },
                 {
-                    "name": "Get Single Blog",
+                    "name": "Get a specific with posts",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -68,7 +68,7 @@
                     }
                 },
                 {
-                    "name": "Update Blog",
+                    "name": "Update a blog",
                     "request": {
                         "method": "PUT",
                         "header": [
@@ -93,7 +93,7 @@
                     }
                 },
                 {
-                    "name": "Delete Blog",
+                    "name": "Delete a blog",
                     "request": {
                         "method": "DELETE",
                         "header": [
@@ -115,7 +115,7 @@
             "name": "Posts",
             "item": [
                 {
-                    "name": "Get All Posts in Blog",
+                    "name": "Get All Posts in a Blog",
                     "request": {
                         "method": "GET",
                         "header": [
