@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Exception;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
@@ -37,9 +38,19 @@ class BlogController extends Controller
                 'description' => 'required|string',
                 'image_url' => 'nullable|url',
                 'user_id' => 'required|exists:users,id'
-
-                // 'user_id' => 1,
             ]);
+
+
+            if (Blog::where('user_id', $validated['user_id'])
+                ->where('title', $validated['title'])
+                ->exists()
+            ) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Blog creation failed',
+                    'errors' => ['title' => ['You already have a blog with this title. Please choose a different title.']]
+                ], 422);
+            }
 
             $blog = Blog::create($validated);
             $blog->load(['user', 'posts']);
@@ -55,6 +66,12 @@ class BlogController extends Controller
                 'message' => 'Validation failed',
                 'errors' => $e->errors()
             ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Something went wrong',
+                'errors' => $e->getMessage()
+            ], 500);
         }
     }
 
