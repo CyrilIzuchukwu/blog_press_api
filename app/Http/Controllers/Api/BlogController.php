@@ -79,21 +79,21 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Blog $blog): JsonResponse
+    public function show($id)
     {
-        $blog->load(['user', 'posts.likes', 'posts.comments.user']);
+        try {
+            $blog = Blog::with(['user', 'posts'])->findOrFail($id);
 
-        if (!$blog) {
             return response()->json([
+                'status' => 'success',
+                'data' => $blog
+            ]);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'status' => 'error',
                 'message' => 'Blog not found'
             ], 404);
         }
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $blog,
-            'message' => 'Blog retrieved successfully'
-        ]);
     }
 
     /**
